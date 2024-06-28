@@ -71,9 +71,11 @@ class AddStoryActivity : AppCompatActivity() {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
 
-        binding.galleryButton.setOnClickListener { startGallery() }
-        binding.cameraButton.setOnClickListener { startCameraX() }
-        binding.uploadButton.setOnClickListener { uploadImage() }
+        binding.apply {
+            galleryButton.setOnClickListener{startGallery()}
+            cameraButton.setOnClickListener{startCameraX()}
+            uploadButton.setOnClickListener { uploadImage() }
+        }
     }
 
 

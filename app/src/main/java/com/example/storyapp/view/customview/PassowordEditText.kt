@@ -21,7 +21,7 @@ class PasswordEditText @JvmOverloads constructor(
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (p0.toString().length < 8) {
-                    setError("Password cannot be less than 8 characters", null)
+                    setError(context.getString(R.string.password_cannot_be_less_than_8_characters), null)
                 } else {
                     error = null
                 }

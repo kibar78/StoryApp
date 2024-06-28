@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.storyapp.data.di.Injection
 import com.example.storyapp.data.repository.Repository
-import com.example.storyapp.view.Detail.DetailStoriesViewModel
+import com.example.storyapp.view.detail.DetailStoriesViewModel
 import com.example.storyapp.view.login.LoginViewModel
 import com.example.storyapp.view.main.MainViewModel
 import com.example.storyapp.view.register.RegisterViewModel

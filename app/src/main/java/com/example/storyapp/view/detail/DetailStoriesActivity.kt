@@ -1,4 +1,4 @@
-package com.example.storyapp.view.Detail
+package com.example.storyapp.view.detail
 
 import android.os.Bundle
 import android.view.View

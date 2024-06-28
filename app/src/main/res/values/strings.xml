@@ -26,4 +26,6 @@
     <string name="empty_text">NO DATA</string>
     <string name="error_password">Password cannot be less than 8 characters</string>
     <string name="error_email">Invalid Email</string>
+    <string name="password_cannot_be_less_than_8_characters">Password cannot be less than 8 characters</string>
+    <string name="image_capture">Image Capture</string>
 </resources>

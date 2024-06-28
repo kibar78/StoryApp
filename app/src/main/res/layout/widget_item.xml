@@ -12,5 +12,6 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:contentDescription="@string/image_capture"
         tools:srcCompat="@drawable/ic_capture"/>
 </LinearLayout>

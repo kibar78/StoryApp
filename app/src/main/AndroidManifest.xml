@@ -39,7 +39,7 @@
             android:name=".view.upload.AddStoryActivity"
             android:exported="false" />
         <activity
-            android:name=".view.Detail.DetailStoriesActivity"
+            android:name=".view.detail.DetailStoriesActivity"
             android:exported="false" />
         <activity
             android:name=".view.register.RegisterActivity"

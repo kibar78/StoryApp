@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.storyapp.data.response.ListStoryItem
 import com.example.storyapp.databinding.ItemStoriesBinding
-import com.example.storyapp.view.Detail.DetailStoriesActivity
+import com.example.storyapp.view.detail.DetailStoriesActivity
 
 class StoriesAdapter: ListAdapter<ListStoryItem, StoriesAdapter.MyViewHolder>(DIFF_CALLBACK) {
     class MyViewHolder(binding: ItemStoriesBinding): RecyclerView.ViewHolder(binding.root) {
