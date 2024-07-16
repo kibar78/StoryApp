@@ -3,11 +3,11 @@ Submission - Belajar Pengembangan Aplikasi Android Intermediate Dicoding https:/
 
 ## Screenshot
 <p float="left">
-<img src="https://github.com/kibar78/Submission-Belajar-Fundamental-Aplikasi-Android/blob/master/splashscreen.png" width="250">
-<img src="https://github.com/kibar78/Submission-Belajar-Fundamental-Aplikasi-Android/blob/master/listUser.png" width="250">
-<img src="https://github.com/kibar78/Submission-Belajar-Fundamental-Aplikasi-Android/blob/master/detailUser.png" width="250">
-<img src="https://github.com/kibar78/Submission-Belajar-Fundamental-Aplikasi-Android/blob/master/favoriteUser.png" width="250">
-<img src="https://github.com/kibar78/Submission-Belajar-Fundamental-Aplikasi-Android/blob/master/darkmode.png" width="250">
+<img src="" width="250">
+<img src="" width="250">
+<img src="" width="250">
+<img src="" width="250">
+<img src="" width="250">
 </p>
 
      
