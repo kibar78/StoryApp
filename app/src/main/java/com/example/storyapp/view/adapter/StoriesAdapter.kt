@@ -4,33 +4,33 @@ import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.util.Pair
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.storyapp.data.response.ListStoryItem
+import com.example.storyapp.data.local.room.StoryEntity
 import com.example.storyapp.databinding.ItemStoriesBinding
 import com.example.storyapp.view.detail.DetailStoriesActivity
 
-class StoriesAdapter: ListAdapter<ListStoryItem, StoriesAdapter.MyViewHolder>(DIFF_CALLBACK) {
-    class MyViewHolder(binding: ItemStoriesBinding): RecyclerView.ViewHolder(binding.root) {
+class StoriesAdapter:
+    PagingDataAdapter<StoryEntity, StoriesAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
+    class MyViewHolder(binding: ItemStoriesBinding):
+        RecyclerView.ViewHolder(binding.root) {
         private val image = binding.storyImage
         private val name = binding.tvName
         private val desc = binding.tvDesc
 
-        fun bind(listStories: ListStoryItem){
+        fun bind(listStories: StoryEntity){
             name.text = listStories.name
-            desc.text = listStories.description
+            desc.text = listStories.desc
             Glide.with(itemView.context)
                 .load(listStories.photoUrl)
                 .into(image)
-
             itemView.setOnClickListener {
                 val goDetail = Intent(itemView.context, DetailStoriesActivity::class.java)
-                goDetail.putExtra(DetailStoriesActivity.EXTRA_ID , listStories.id)
                 val optionCompat: ActivityOptionsCompat =
                     ActivityOptionsCompat.makeSceneTransitionAnimation(
                         itemView.context as Activity,
@@ -38,20 +38,8 @@ class StoriesAdapter: ListAdapter<ListStoryItem, StoriesAdapter.MyViewHolder>(DI
                         Pair(name, "name"),
                         Pair(desc,"description"),
                     )
+                goDetail.putExtra(DetailStoriesActivity.EXTRA_ID , listStories.id)
                 itemView.context.startActivity(goDetail, optionCompat.toBundle())
-            }
-        }
-    }
-
-
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
-            override fun areItemsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areContentsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
-                return oldItem == newItem
             }
         }
     }
@@ -63,7 +51,21 @@ class StoriesAdapter: ListAdapter<ListStoryItem, StoriesAdapter.MyViewHolder>(DI
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val listStories = getItem(position)
-        holder.bind(listStories)
+        if (listStories != null) {
+            holder.bind(listStories)
+        }
+    }
+
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<StoryEntity>() {
+            override fun areItemsTheSame(oldItem: StoryEntity, newItem: StoryEntity): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: StoryEntity, newItem: StoryEntity): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 
 }

@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin)
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -34,10 +37,15 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
     buildFeatures{
         viewBinding = true
         buildConfig = true
+    }
+    testOptions{
+        unitTests.isReturnDefaultValues = true
+        animationsDisabled = true
     }
 
 }
@@ -51,6 +59,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -83,4 +92,28 @@ dependencies {
 
     //Exif
     implementation(libs.androidx.exifinterface)
+
+    //Paging3
+    implementation(libs.androidx.room.paging)
+    implementation(libs.androidx.paging.runtime.ktx)
+
+    //room
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.room.compiler)
+
+    implementation(libs.play.services.maps.v1800)
+    implementation(libs.play.services.location)
+
+    androidTestImplementation(libs.androidx.core.testing) //InstantTaskExecutorRule
+    androidTestImplementation(libs.kotlinx.coroutines.test) //TestDispatcher
+
+    testImplementation(libs.androidx.core.testing) // InstantTaskExecutorRule
+    testImplementation(libs.kotlinx.coroutines.test) //TestDispatcher
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
+
+    androidTestImplementation(libs.espresso.intents) //IntentsTestRule
+    androidTestImplementation(libs.espresso.contrib)
+    implementation(libs.androidx.espresso.idling.resource)
+    debugImplementation(libs.androidx.fragment.testing) //launchFragmentInContainer
 }

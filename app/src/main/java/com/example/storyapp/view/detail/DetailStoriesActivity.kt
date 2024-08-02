@@ -60,8 +60,8 @@ class DetailStoriesActivity : AppCompatActivity() {
                         showLoading(true)
                     }
                     is ResultState.Success->{
-                        setStories(result.data)
                         showLoading(false)
+                        setStories(result.data)
                     }
                     is ResultState.Error->{
                         showToast(result.error)

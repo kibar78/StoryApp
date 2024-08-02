@@ -26,6 +26,11 @@
     <string name="empty_text">NO DATA</string>
     <string name="error_password">Password cannot be less than 8 characters</string>
     <string name="error_email">Invalid Email</string>
-    <string name="password_cannot_be_less_than_8_characters">Password cannot be less than 8 characters</string>
     <string name="image_capture">Image Capture</string>
+    <string name="map">Map</string>
+    <string name="add_story">Add Story</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="retry">Try Again</string>
+    <string name="start_point">Start Point</string>
+    <string name="enable_location">Enable Location</string>
 </resources>

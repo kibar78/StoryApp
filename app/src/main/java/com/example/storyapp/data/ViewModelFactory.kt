@@ -8,6 +8,7 @@ import com.example.storyapp.data.repository.Repository
 import com.example.storyapp.view.detail.DetailStoriesViewModel
 import com.example.storyapp.view.login.LoginViewModel
 import com.example.storyapp.view.main.MainViewModel
+import com.example.storyapp.view.maps.LocationViewModel
 import com.example.storyapp.view.register.RegisterViewModel
 import com.example.storyapp.view.upload.AddStoryViewModel
 
@@ -30,6 +31,9 @@ class ViewModelFactory private constructor(private val repository: Repository):
             }
             modelClass.isAssignableFrom(AddStoryViewModel::class.java)->{
                 AddStoryViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(LocationViewModel::class.java)->{
+                LocationViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

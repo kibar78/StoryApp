@@ -23,12 +23,14 @@ class AddStoryViewModel(private val repository: Repository): ViewModel() {
 
     val getSession: Flow<String?> = repository.getSession()
 
-    fun uploadStory(imageFile: File, description: String){
+    fun uploadStory(imageFile: File, description: String, lat: Float?, lon: Float?){
         viewModelScope.launch {
             repository.getSession().collect{token->
                 if (token != null){
                     _uploadStory.value = ResultState.Loading
-                    val requestBody = description.toRequestBody("text/plain".toMediaType())
+                    val desc = description.toRequestBody("text/plain".toMediaType())
+                    val lat = lat?.toString()?.toRequestBody("text/plain".toMediaType())
+                    val lon = lon?.toString()?.toRequestBody("text/plain".toMediaType())
                     val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
                     val multipartBody = MultipartBody.Part.createFormData(
                         "photo",
@@ -36,7 +38,7 @@ class AddStoryViewModel(private val repository: Repository): ViewModel() {
                         requestImageFile
                     )
                     try {
-                        val response = repository.uploadStory(token,multipartBody,requestBody)
+                        val response = repository.uploadStory(token,multipartBody,desc,lat,lon)
                         _uploadStory.value = ResultState.Success(response)
                     }catch (e:Exception){
                         _uploadStory.value = ResultState.Error(e.message.toString())
