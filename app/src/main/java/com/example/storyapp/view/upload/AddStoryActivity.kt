@@ -25,6 +25,7 @@ import com.example.storyapp.R
 import com.example.storyapp.data.ResultState
 import com.example.storyapp.data.ViewModelFactory
 import com.example.storyapp.databinding.ActivityAddStoryBinding
+import com.example.storyapp.view.main.MainActivity
 import com.example.storyapp.view.upload.CameraActivity.Companion.CAMERAX_RESULT
 import com.example.storyapp.view.utils.reduceFileImage
 import com.example.storyapp.view.utils.uriToFile
@@ -104,8 +105,8 @@ class AddStoryActivity : AppCompatActivity() {
         }
 
         binding.apply {
-            galleryButton.setOnClickListener{startGallery()}
-            cameraButton.setOnClickListener{startCameraX()}
+            galleryButton.setOnClickListener { startGallery()}
+            cameraButton.setOnClickListener { startCameraX()}
             uploadButton.setOnClickListener { uploadImage() }
         }
 
@@ -121,7 +122,6 @@ class AddStoryActivity : AppCompatActivity() {
 
     private fun startCameraX(){
         val intent = Intent(this, CameraActivity::class.java)
-        startActivity(intent)
         launcherIntentCameraX.launch(intent)
     }
     private val launcherIntentCameraX = registerForActivityResult(
@@ -203,7 +203,9 @@ class AddStoryActivity : AppCompatActivity() {
                         is ResultState.Success -> {
                             showLoading(false)
                             result.data.message?.let { showToast(it) }
-                            finish()
+                            val intent = Intent(this,MainActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
                         }
 
                         is ResultState.Error -> {
@@ -227,4 +229,5 @@ class AddStoryActivity : AppCompatActivity() {
     companion object {
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
+
 }

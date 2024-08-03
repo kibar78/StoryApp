@@ -19,4 +19,4 @@ class MainViewModel(private val repository: Repository): ViewModel(){
 
     fun getStories(token: String) = repository.getStories(token).cachedIn(viewModelScope)
 
-}
+    }

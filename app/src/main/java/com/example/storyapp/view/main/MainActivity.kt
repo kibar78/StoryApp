@@ -23,12 +23,15 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var token = ""
+
     private lateinit var adapter: StoriesAdapter
 
-    private val viewModel by viewModels<MainViewModel>{
+    private var token = ""
+
+    private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(this)
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,56 +45,55 @@ class MainActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvStories.layoutManager = layoutManager
+        adapter = StoriesAdapter()
+
+        binding.rvStories.adapter =
+            adapter.withLoadStateHeaderAndFooter(footer = LoadingStateAdapter {
+                adapter.retry()
+            }, header = LoadingStateAdapter {
+                adapter.retry()
+            })
 
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-                launch {
-                    viewModel.getSession.collect{token->
-                        if (token.isNullOrEmpty()) {
-                            showLoading(true)
-                            navigateToWelcomeActivity()
-                        } else {
-                            showLoading(false)
-                            try{
-                                adapter = StoriesAdapter()
-                                binding.rvStories.adapter =
-                                    adapter.withLoadStateFooter(
-                                        footer = LoadingStateAdapter {
-                                            adapter.retry()
-                                        }
-                                    )
-                                viewModel.getStories(token = token).observe(this@MainActivity){
-                                    adapter.submitData(lifecycle,it)
-                                }
-                            }catch (e:Exception){
-                                showToast(e.message.toString())
-                            }
+            viewModel.getSession.collect { token ->
+                if (token.isNullOrEmpty()) {
+                    showLoading(true)
+                    navigateToWelcomeActivity()
+                } else {
+                    showLoading(false)
+                    try {
+                        viewModel.getStories(token = token).observe(this@MainActivity) {
+                            adapter.submitData(lifecycle, it)
                         }
+                    } catch (e: Exception) {
+                        showToast(e.message.toString())
                     }
                 }
             }
         }
 
-        binding.toolbar.setOnMenuItemClickListener{menuItem->
-            when(menuItem.itemId){
-                R.id.action_logout ->{
+        binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.action_logout -> {
                     AlertDialog.Builder(this).apply {
                         setTitle("Logout")
                         setMessage(getString(R.string.info_logout))
-                        setPositiveButton(getString(R.string.yes)){_,_ ->
+                        setPositiveButton(getString(R.string.yes)) { _, _ ->
                             viewModel.logout()
                         }
-                        setNegativeButton(getString(R.string.no)){dialog,_ -> dialog.cancel() }
+                        setNegativeButton(getString(R.string.no)) { dialog, _ -> dialog.cancel() }
                         create()
                         show()
                     }
                     true
                 }
-                R.id.action_map->{
+
+                R.id.action_map -> {
                     val intent = Intent(this, MapsActivity::class.java)
                     startActivity(intent)
                     true
                 }
+
                 else -> false
             }
         }
@@ -103,16 +105,16 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun showLoading(isLoading: Boolean){
-        binding.pbLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
-
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        binding.pbLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
     override fun onResume() {
         super.onResume()
-        viewModel.getStories(token = token)
+
     }
 }
