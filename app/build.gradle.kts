@@ -101,7 +101,6 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.room.compiler)
 
-    implementation(libs.play.services.maps.v1800)
     implementation(libs.play.services.location)
 
     androidTestImplementation(libs.androidx.core.testing) //InstantTaskExecutorRule

@@ -22,8 +22,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.storyapp.R
-import com.example.storyapp.data.ResultState
-import com.example.storyapp.data.ViewModelFactory
+import com.example.storyapp.data.result.ResultState
+import com.example.storyapp.view.utils.ViewModelFactory
 import com.example.storyapp.databinding.ActivityAddStoryBinding
 import com.example.storyapp.view.main.MainActivity
 import com.example.storyapp.view.upload.CameraActivity.Companion.CAMERAX_RESULT
@@ -229,5 +229,6 @@ class AddStoryActivity : AppCompatActivity() {
     companion object {
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
+
 
 }

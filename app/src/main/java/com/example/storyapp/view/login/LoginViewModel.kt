@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.example.storyapp.data.ResultState
+import com.example.storyapp.data.result.ResultState
 import com.example.storyapp.data.repository.Repository
 import kotlinx.coroutines.launch
 

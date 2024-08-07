@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.storyapp.R
-import com.example.storyapp.data.ResultState
-import com.example.storyapp.data.ViewModelFactory
+import com.example.storyapp.data.result.ResultState
+import com.example.storyapp.view.utils.ViewModelFactory
 import com.example.storyapp.databinding.ActivityLoginBinding
 import com.example.storyapp.view.main.MainActivity
 

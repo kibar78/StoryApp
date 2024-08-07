@@ -1,4 +1,4 @@
-package com.example.storyapp.data
+package com.example.storyapp.view.utils
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

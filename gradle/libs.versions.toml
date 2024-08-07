@@ -66,7 +66,6 @@ androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navi
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 play-services-home = { module = "com.google.android.gms:play-services-home", version.ref = "playServicesHome" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesMapsVersion" }
-play-services-maps-v1800 = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMapsVersion" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraxVersion" }
 camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraxVersion" }

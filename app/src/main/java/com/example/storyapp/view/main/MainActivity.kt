@@ -7,12 +7,10 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.storyapp.R
-import com.example.storyapp.data.ViewModelFactory
+import com.example.storyapp.view.utils.ViewModelFactory
 import com.example.storyapp.databinding.ActivityMainBinding
 import com.example.storyapp.view.adapter.LoadingStateAdapter
 import com.example.storyapp.view.adapter.StoriesAdapter
@@ -25,8 +23,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var adapter: StoriesAdapter
-
-    private var token = ""
 
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(this)
@@ -113,8 +109,4 @@ class MainActivity : AppCompatActivity() {
         binding.pbLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-    override fun onResume() {
-        super.onResume()
-
-    }
 }

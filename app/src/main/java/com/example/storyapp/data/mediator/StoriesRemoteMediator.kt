@@ -1,4 +1,4 @@
-package com.example.storyapp.data
+package com.example.storyapp.data.mediator
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType

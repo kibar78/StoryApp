@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.storyapp.data.ResultState
+import com.example.storyapp.data.result.ResultState
 import com.example.storyapp.data.repository.Repository
 import com.example.storyapp.data.response.ErrorResponse
 import kotlinx.coroutines.flow.Flow

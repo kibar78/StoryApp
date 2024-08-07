@@ -13,8 +13,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.example.storyapp.R
-import com.example.storyapp.data.ResultState
-import com.example.storyapp.data.ViewModelFactory
+import com.example.storyapp.data.result.ResultState
+import com.example.storyapp.view.utils.ViewModelFactory
 import com.example.storyapp.data.response.Story
 import com.example.storyapp.databinding.ActivityDetailStoriesBinding
 import kotlinx.coroutines.launch

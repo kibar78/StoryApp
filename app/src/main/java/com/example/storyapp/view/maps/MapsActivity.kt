@@ -1,25 +1,19 @@
 package com.example.storyapp.view.maps
 
-import android.Manifest
 import android.content.ContentValues.TAG
-import android.content.pm.PackageManager
 import android.content.res.Resources
-import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.storyapp.R
-import com.example.storyapp.data.ResultState
-import com.example.storyapp.data.ViewModelFactory
-import com.google.android.gms.maps.CameraUpdateFactory
+import com.example.storyapp.data.result.ResultState
+import com.example.storyapp.view.utils.ViewModelFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment

@@ -6,7 +6,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
-import com.example.storyapp.data.StoriesRemoteMediator
+import com.example.storyapp.data.mediator.StoriesRemoteMediator
 import com.example.storyapp.data.local.datastore.UserPreferences
 import com.example.storyapp.data.local.room.StoriesDatabase
 import com.example.storyapp.data.local.room.StoryEntity
